@@ -41,7 +41,7 @@ const countupdate=()=>{
             
             axios.get(`${baseurl}/user/all`)
                 .then((res) => {
-                    setLoading(false)
+                    setLoading(true)
                     setData(res.data.data);
                     setEditedData({ id: '', content: '' }); // Reset editedData state
                 }).catch((error) => 
@@ -51,6 +51,7 @@ const countupdate=()=>{
                 });
                 countupdate()
         } catch (error) {
+            setLoading(false)
             console.log(error);
         }
     };
@@ -63,7 +64,7 @@ const countupdate=()=>{
             </div>
             {  data && data.length>0 ? (
                  data && data.map((item) => (
-                    <div key={item._id} style={{ display: "flex", width: "300px", gap: "10px", marginLeft: "50px", marginBottom: "10px", alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div key={item._id} style={{ display: "flex", borderBottom:"1px solid black",width: "300px", gap: "10px", marginLeft: "50px", marginBottom: "10px", alignItems: 'center', justifyContent: 'space-between' }}>
                         {editedData.id === item._id ? (
                             <input
                                 type="text"
@@ -74,14 +75,14 @@ const countupdate=()=>{
                             <span style={{ fontSize: "16px" }}>{item.content}</span>
                         )}
                         {editedData.id === item._id ? (
-                            <button onClick={handleSave}>Save</button>
+                            <button onClick={handleSave} style={{marginBottom:"5px"}}>{loading ? '...loading':"save"}</button>
                         ) : (
-                            <button onClick={() => handleEdit(item._id, item.content)}>Edit</button>
+                            <button onClick={() => handleEdit(item._id, item.content)}  style={{marginBottom:"5px"}}>Edit</button>
                         )}
                     </div>
                 ))
             ):(
-            <text>No Data</text>
+            <text style={{marginLeft:'10px'}}>No Data</text>
             )
                
             }
