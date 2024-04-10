@@ -1,0 +1,1 @@
+export const baseurl = 'https://dataneuron-backend-4y9j.onrender.com'
