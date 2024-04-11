@@ -1,15 +1,15 @@
-import logo from './logo.svg';
+
+
 import './App.css';
-import './style/resizable.css'
-import './style/splitter.css'
-import ResizableLayout from './component/Resizable';
-import ResizablePanelsComponent from './component/Resizable';
-import MyResizableLayout from './component/Resizable';
+import NewRezibale from './component/NewRezibale';
+
+
 
 function App() {
   return (
     <div className="App">
-     <MyResizableLayout/>
+      <h1  className='title'>Resizable Layout</h1>
+     <NewRezibale/>
     </div>
   );
 }

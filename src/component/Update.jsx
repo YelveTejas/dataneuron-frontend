@@ -29,7 +29,7 @@ const countupdate=()=>{
             countupdate()
             
     }, [flag]);
-   console.log(count,'count')
+//    console.log(count,'count')
     const handleEdit = (id, content) => {
         setEditedData({ id, content });
     };
@@ -41,7 +41,7 @@ const countupdate=()=>{
             
             axios.get(`${baseurl}/user/all`)
                 .then((res) => {
-                    setLoading(true)
+                    setLoading(false)
                     setData(res.data.data);
                     setEditedData({ id: '', content: '' }); // Reset editedData state
                 }).catch((error) => 
@@ -58,13 +58,13 @@ const countupdate=()=>{
 
     return (
         <div>
-            <div  style={{marginBottom:"10px",display:'flex',gap:"10px",marginLeft:"10px"}}>
+            <div  style={{marginBottom:"10px",display:'flex',gap:"10px"}}>
                 <text>{`Add:${data.length ? data.length : 0}`}</text>
                 <text>{`Update:${count.update ? count.update : 0}`}</text>
             </div>
             {  data && data.length>0 ? (
                  data && data.map((item) => (
-                    <div key={item._id} style={{ display: "flex", borderBottom:"1px solid black",width: "300px", gap: "10px", marginLeft: "50px", marginBottom: "10px", alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div key={item._id} style={{ display: "flex",maxWidth:"350px",borderBottom:"1px solid black", gap: "10px", marginBottom: "10px", alignItems: 'center', justifyContent: 'space-between',flexWrap:'wrap' }}>
                         {editedData.id === item._id ? (
                             <input
                                 type="text"
